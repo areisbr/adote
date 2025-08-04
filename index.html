@@ -1,7 +1,8 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Adote um Gatinho Idoso</title>
   <style>
     body {
@@ -10,79 +11,200 @@
       color: #333;
       margin: 0;
       padding: 0;
-    }header {
-  background-color: #ffcc70;
-  padding: 20px;
-  text-align: center;
-  color: #333;
-}
+    }
 
-h1 {
-  margin: 0;
-  font-size: 2em;
-}
+    header {
+      background-color: #ffcc70;
+      padding: 20px;
+      text-align: center;
+      color: #333;
+    }
 
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 10px;
-  padding: 10px;
-  background: #fff;
-}
+    h1 {
+      margin: 0;
+      font-size: 2em;
+    }
 
-.carousel img {
-  height: 200px;
-  border-radius: 10px;
-  scroll-snap-align: start;
-  object-fit: cover;
-}
+    .carousel-container {
+      position: relative;
+      max-width: 900px;
+      margin: 20px auto;
+      overflow: hidden;
+    }
 
-.content {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
 
-.content h2 {
-  color: #444;
-}
+    .carousel-slide {
+      flex: 0 0 33.3333%;
+      padding: 5px;
+      box-sizing: border-box;
+    }
 
-.content p {
-  line-height: 1.6;
-}
+    .carousel-slide img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+    }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #999;
-}
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 10px;
+    }
 
+    .carousel-buttons button {
+      background: rgba(255, 204, 112, 0.8);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .content h2 {
+      color: #444;
+    }
+
+    .content p {
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      margin: 5% auto;
+      display: block;
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
   </style>
 </head>
-<body>  <header>
-    <h1>Procura-se um Lar para um Gatinho Idoso 🐾</h1>
-  </header>  <div class="carousel">
-    <img src="foto1.jpg" alt="Gato deitado ao sol">
-    <img src="foto2.jpg" alt="Gato olhando para a câmera">
-    <img src="foto3.jpg" alt="Gato dormindo">
-    <img src="foto4.jpg" alt="Gato com outro gato jovem">
-    <img src="foto5.jpg" alt="Gato tomando sol na chácara">
-    <img src="foto6.jpg" alt="Gato recebendo carinho">
-  </div>  <div class="content">
-    <h2>Sobre o gatinho</h2>
-    <p>Este senhorzinho de 16 anos está em busca de um novo lar, provisório (mínimo de 30 dias) ou definitivo. Ele é muito dócil, tranquilo e adora tomar sol sossegado.</p>
-    <p>Está <strong>vermifugado</strong>, testado <strong>negativo para FIV e FeLV</strong> e aceita bem os <strong>medicamentos diários para dor</strong> (tanto comprimidos quanto líquidos). Precisa de manejo delicado e companhia diária, pois está numa fase em que atenção e afeto são fundamentais.</p>
-    <p>Atualmente vive em uma chácara e convive pacificamente com um gato mais jovem, mas nossa rotina não permite mais garantir cuidados diários como ele merece.</p><h2>Ajuda e apoio</h2>
-<p>Podemos contribuir com <strong>alimentação e medicamentos</strong>. Estamos abertos tanto para lar temporário quanto para adoção definitiva.</p>
+<body>
+  <header>
+    <h1>Procura-se um lar para um Gatinho Idoso 🐾</h1>
+  </header>
 
-<h2>Contato</h2>
-<p>Se você puder acolher esse gatinho ou conhece alguém que possa, por favor, entre em contato. Ele merece viver essa etapa cercado de carinho e segurança. 💛</p>
+  <div class="carousel-container">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide"><img src="images/foto1.jpg" alt="foto1"></div>
+      <div class="carousel-slide"><img src="images/foto2.jpg" alt="foto2"></div>
+      <div class="carousel-slide"><img src="images/foto3.jpg" alt="foto3"></div>
+      <div class="carousel-slide"><img src="images/foto4.jpg" alt="foto4"></div>
+      <div class="carousel-slide"><img src="images/foto5.jpg" alt="foto5"></div>
+      <div class="carousel-slide"><img src="images/foto6.jpg" alt="foto6"></div>
+      <div class="carousel-slide"><img src="images/foto7.jpg" alt="foto7"></div>
+    </div>
+    <div class="carousel-buttons">
+      <button onclick="moveCarousel(1)">‹</button>
+      <button onclick="moveCarousel(-1)">›</button>
+    </div>
+  </div>
 
-  </div>  <footer>
+  <div class="content">
+    <h2>Sobre o Gordão</h2>
+    <p>Este senhorzinho de 15 anos precisa de um novo lar, provisório ou definitivo. Atualmente ele vive em ambiente de chácara, mas as dores da idade chegaram e agora ele precisa de cuidado diário.</p>
+    <p>Ele é muito dócil, tranquilo. Sua rotina é basicamente dormir e buscar um local para tomar sol pela manhã.</p>
+    <p>Está <strong>vermifugado</strong>, testado <strong>negativo para FIV e FeLV</strong> e aceita os <strong>medicamentos diários para dor</strong> (tanto comprimidos quanto líquidos). Com o manejo que aprendi com o veterinário, achei fácil dar a medicação.</p>
+    <p>Ele retribui o cuidado com sua companhia, é muito conectado com as pessoas que lhe tratam bem.</p>
+    <p>Na chácara ele convive com outro gato bem mais jovem, apesar de não gostarem das mesmas brincadeiras ele não reage de forma negativa, é pacifico.</p>
+
+    <h2>Ajuda e apoio</h2>
+    <p>Podemos contribuir com <strong>alimentação e medicamentos</strong>. Estamos abertos tanto para lar temporário quanto para adoção definitiva.</p>
+
+    <h2>Contato</h2>
+    <p>Se você puder acolher esse gatinho ou conhece alguém que possa, por favor, entre em contato. Ele merece viver essa etapa cercado de carinho e segurança. 🐾</p>
+  </div>
+
+  <footer>
     &copy; 2025 | Adoção responsável
-  </footer></body>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" onclick="closeModal(event)">
+    <span class="close" onclick="closeModal(event)">&times;</span>
+    <img class="modal-content" id="modalImage" alt="imagem ampliada">
+  </div>
+
+  <script>
+    const track = document.getElementById("carouselTrack");
+    let position = 0;
+
+    function moveCarousel(direction) {
+      const totalSlides = track.children.length;
+      const slideWidth = track.children[0].offsetWidth;
+      const maxPosition = -(slideWidth * (totalSlides - 3));
+      position += direction * slideWidth;
+
+      if (position > 0) position = 0;
+      if (position < maxPosition) position = maxPosition;
+
+      track.style.transform = `translateX(${position}px)`;
+    }
+
+    // Modal behavior
+    const modal = document.getElementById("modal");
+    const modalImage = document.getElementById("modalImage");
+
+    document.querySelectorAll(".carousel-slide img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImage.src = img.src;
+        modalImage.alt = img.alt;
+      });
+    });
+
+    function closeModal(event) {
+      if (event.target === modal || event.target.className === "close") {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
 </html>
