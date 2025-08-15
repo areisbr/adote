@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <title>Adote um Gatinho Idoso</title>
+  <title>Procura-se um lar para o Mingau</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -126,7 +126,7 @@
       cursor: pointer;
     }
 
-    .whatsapp-button {
+    .z-button {
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -142,7 +142,7 @@
       font-size: 32px;
     }
 
-    .whatsapp-button:hover {
+    .z-button:hover {
       background-color: #1ebe5b;
     }
 
@@ -150,7 +150,7 @@
 </head>
 <body>
   <header>
-    <h1>Procura-se um lar para um Gatinho Idoso 🐾</h1>
+    <h1>Procura-se um lar para o Mingau 🐾</h1>
   </header>
 
   <div class="carousel-container">
@@ -170,37 +170,41 @@
   </div>
 
   <div class="content">
-    <h2>Sobre o Gordão</h2>
-    <p>Este senhorzinho de 15 anos precisa de um novo lar, provisório ou definitivo. Atualmente ele vive em ambiente de chácara, mas as dores da idade chegaram e agora ele precisa de cuidado diário.</p>
-    <p>Ele é muito dócil, tranquilo. Sua rotina é basicamente dormir e buscar um local para tomar sol pela manhã.</p>
-    <p>Está <strong>vermifugado</strong>, testado <strong>negativo para FIV e FeLV</strong> e aceita os <strong>medicamentos diários para dor</strong> (tanto comprimidos quanto líquidos). Com o manejo que aprendi com o veterinário, achei fácil dar a medicação.</p>
-    <p>Ele retribui o cuidado com sua companhia, é muito conectado com as pessoas que lhe tratam bem.</p>
-    <p>Na chácara ele convive com outro gato bem mais jovem, apesar de não gostarem das mesmas brincadeiras ele não reage de forma negativa, é pacifico.</p>
+    <h2>Sobre o Mingau</h2>
+    <p>Esse malandrinho precisa de um novo lar provisório ou definitivo. Abrigamos ele desde que apareceu e decidiu ficar com nossos dois gatos. O Mimi se foi em Junho de 2025 e o Gordão precisou se mudar para um novo lar, devido aos seus 15 anos e os cuidados especiais que a idade pede.</p>
+    <p>Temperamento é dócil tanto conosco quanto com as visitas, mas pode mordiscar quando quer atenção. É bastante ativo e provocador com os gatos da casa. Tem comportamento de gato jovem, responde brincadeiras sendo facilmente estimulado por brinquedos. Sua rotina tem sido explorar a vizinhança e vigiar seu território.</p>
+    <p>Estimamos que ele tenha 8 anos de idade, pesa 6kg e encaminhamos para castração assim que percebemos não ter dono.</p>
 
     <h2>Ajuda e apoio</h2>
-    <p>Podemos contribuir com <strong>alimentação e medicamentos</strong>. Estamos abertos tanto para lar temporário quanto para adoção definitiva.</p>
+    <p>Podemos contribuir com <strong>alimentação, vacinas, exames e adaptações para recebê-lo</strong>. Estamos abertos tanto para lar temporário quanto para adoção definitiva.</p>
 
     <h2>Contato</h2>
-    <p>Se você puder acolher esse gatinho ou conhece alguém que possa, por favor, entre em contato. Ele merece viver essa etapa cercado de carinho e segurança. 🐾</p>
-    <p><a id="zap" class="whatsapp-button" target="_blank"><i class="fab fa-whatsapp"></i></a></p>
+    <p>Se você puder acolher esse gatinho ou conhece alguém que possa, por favor, entre em contato. Ele merece viver na companhia de mais alguém. 🐾</p>
+    
+    <p>
+      <a id="z" class="z-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </p>
   </div>
 
   <footer>
     &copy; 2025 | Adoção responsável
   </footer>
 
-  <!-- Modal -->
   <div id="modal" class="modal" onclick="closeModal(event)">
     <span class="close" onclick="closeModal(event)">&times;</span>
-    <img class="modal-content" id="modalImage" alt="imagem ampliada">
+    <img class="modal-content" id="modalImage" alt="imagem">
   </div>
 
   <script>
+    function f1(s) {return s.split('').reverse().join('');}
+    const a = f1('8SZt5SY39yL6MHc0RHa');
+    const b = f1('=oAMykDM3ITO5kTOxUTN');
     const track = document.getElementById("carouselTrack");
+    const z = document.getElementById("z");
+    z.href = atob(a) + atob(b);
     let position = 0;
-    const c = "4917636619375";
-    const z = document.getElementById("zap");
-    z.href = "https://wa.me/" + c;
 
     function moveCarousel(direction) {
       const totalSlides = track.children.length;
@@ -214,7 +218,6 @@
       track.style.transform = `translateX(${position}px)`;
     }
 
-    // Modal behavior
     const modal = document.getElementById("modal");
     const modalImage = document.getElementById("modalImage");
 
