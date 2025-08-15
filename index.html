@@ -55,7 +55,6 @@
     .carousel-buttons {
       position: absolute;
       top: 50%;
-      width: 100%;
       display: flex;
       justify-content: space-between;
       transform: translateY(-50%);
@@ -70,6 +69,14 @@
       height: 40px;
       cursor: pointer;
       font-size: 20px;
+    }
+
+    .carousel-button-left {
+      left: 0px;
+    }
+
+    .carousel-button-right {
+      right: 0px;
     }
 
     .content {
@@ -163,8 +170,10 @@
       <div class="carousel-slide"><img src="images/foto6.jpg" alt="foto6"></div>
       <div class="carousel-slide"><img src="images/foto7.jpg" alt="foto7"></div>
     </div>
-    <div class="carousel-buttons">
+    <div class="carousel-buttons carousel-button-left">
       <button onclick="moveCarousel(1)">‹</button>
+    </div>
+    <div class="carousel-buttons carousel-button-right">
       <button onclick="moveCarousel(-1)">›</button>
     </div>
   </div>
